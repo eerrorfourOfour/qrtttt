@@ -36,7 +36,7 @@ function UILibrary:Main(PrjName, HideKey)
     FadeBackgroundFrame.BorderSizePixel = 0
     FadeBackgroundFrame.Size = UDim2.new(1, 0, 1, 0)
 
-    -- Create a new tab
+    -- Create a new tab function
     local function NewTab(TabName)
         local newTab = Instance.new("Folder")
         newTab.Name = TabName
@@ -45,9 +45,6 @@ function UILibrary:Main(PrjName, HideKey)
     end
 
     -- Load the loading animation
-    local loader = Instance.new("ScreenGui")
-    loader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    loader.Parent = PARENT
 
     -- Function to display a notification
     local function Nofitication(Text)
@@ -59,23 +56,26 @@ function UILibrary:Main(PrjName, HideKey)
         notification.BorderSizePixel = 2
         notification.SizeConstraint = Enum.SizeConstraint.Absolute
         notification.Size = UDim2.new(0, 300, 0, 50)
-        notification.PositioningBehavior3DLocationType.Value.PositioningBehavior.Value.RelativePositionRelativeToParent.Value.X.Value = -150
-        notification.PositioningBehavior3DLocationType.Value.PositioningBehavior.Value.RelativePositionRelativeToParent.Value.Y.Value = -50
+        notification.PositioningBehavior3DLocationType.Value.PositioningBehavior.Value.RelativePositionRelativeToParent.Value.X.Value =
+            -150
+        notification.PositioningBehavior3DLocationType.Value.PositioningBehavior.Value.RelativePositionRelativeToParent.Value.Y.Value =
+            -50
 
-        local TextLabel11_2_1_1_1_1_1_1_1_1_1_1_1_1_4_Parent7_4_Parent7_6_Parent7 =
+        local TextLabel11_2_1_1_1_1_1_1_1_1_1_1_1_4_Parent7_4_Parent7_6_Parent7 =
             notification:FindFirstChild("TextLabel")
 
-        TextLabel11_2_1_1_1_1_1_1_1_1_1_1_1_1_4_Parent7_4_Parent7_6_Parent7.Text =
+        TextLabel11_2_1_1_1_1_1_1_1_1_1_1_1_4_Parent7_4_Parent7_6_Parent7.Text =
             Text
 
         notification.MouseButton2Down:Connect(function()
             notification:Destroy()
         end)
 
-        notification.Parent = loader
+        notification.Parent = PARENT
+
+        return notification
     end
 
-    -- Function to create a new tab
     return NewTab
 
 end
