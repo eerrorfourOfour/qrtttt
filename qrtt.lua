@@ -58,10 +58,9 @@ local function hideGUI()
 end
 
 -- Create GUI Frame
-local guiFrame = Instance.new("Folder")
+local guiFrame = Instance.new("ScreenGui")
 guiFrame.Name = "GUI"
-guiFrame.Size = UDim2.new(0, 200, 0, 400)
-guiFrame.Position = UDim2.new(0.5, -100, 0.5, -200)
+guiFrame.Parent = game.Players.LocalPlayer.PlayerGui
 
 -- Create Tabs Frame
 local tabsFrame = Instance.new("Folder")
@@ -98,7 +97,7 @@ function GUI_LIBRARY:Load()
     GUI_LIBRARY.Visible = true
     
     -- Animate the GUI into place
-    tweenService:Create(guiFrame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -100, 0.5, -200)}):Play()
+    tweenService:Create(guiFrame, TweenInfo.new(0.5), {Position=UDim2.new(0.5,-100,0.5,-200)}):Play()
 end
 
 return GUI_LIBRARY
