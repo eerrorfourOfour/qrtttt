@@ -5,7 +5,6 @@ local HIDE_KEY = "GUI_Hide"
 local GUI_LIBRARY = script
 
 -- Services
-local tweenService = game:GetService("TweenService")
 local userInputService = game:GetService("UserInputService")
 
 -- Functions
@@ -93,11 +92,7 @@ hideGUI()
 
 -- Load GUI into the game (can be called when needed)
 function GUI_LIBRARY:Load()
-    -- Make the GUI visible
-    GUI_LIBRARY.Visible = true
     
-    -- Animate the GUI into place
-    tweenService:Create(guiFrame, TweenInfo.new(0.5), {Position=UDim2.new(0.5,-100,0.5,-200)}):Play()
 end
 
 return GUI_LIBRARY
