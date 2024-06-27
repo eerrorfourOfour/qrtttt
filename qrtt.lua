@@ -136,8 +136,8 @@ function UILibrary.Main(PrjName,HideKey)
 	List.Size = UDim2.new(0.998000026, 0, 1, 0)
 	List.AutomaticCanvasSize = Enum.AutomaticSize.Y
 	List.ScrollBarThickness = 2
-	List.ScrollBarImageColor3 = Color3.fromRGB(255,140,140)
-	List.ScrollBarImageTransparency = 0.5
+	List.ScrollBarColor3 = Color3.fromRGB(255,140,140)
+	List.ScrollBarTransparency = 0.5
 	List.CanvasSize = UDim2.new(0,0,0,0)
 
 	UIListLayout.Parent = List
@@ -430,8 +430,8 @@ function UILibrary.Main(PrjName,HideKey)
 		Elements.CanvasSize = UDim2.new(0,0,0,0)
 		Elements.AutomaticCanvasSize = Enum.AutomaticSize.Y
 		Elements.ScrollBarThickness = 2
-		Elements.ScrollBarImageColor3 = Color3.fromRGB(255,140,140)
-		Elements.ScrollBarImageTransparency = 0.5
+		Elements.ScrollBarColor3 = Color3.fromRGB(255,140,140)
+		Elements.ScrollBarTransparency = 0.5
 
 		FadeFrame.Name = "FadeFrame"
 		FadeFrame.Parent = Frame
@@ -946,7 +946,7 @@ function UILibrary.Main(PrjName,HideKey)
 				local DropdownCorner = Instance.new("UICorner")
 				local DropdownBox = Instance.new("TextButton")
 				local Frame_2 = Instance.new("Frame")
-				local ImageLabel = Instance.new("ImageLabel")
+				local Label = Instance.new("Label")
 				local DropdownList = Instance.new("ScrollingFrame")
 				local UIListLayout = Instance.new("UIListLayout")
 				local ignd = Instance.new("Frame")
@@ -1000,20 +1000,7 @@ function UILibrary.Main(PrjName,HideKey)
 				Frame_2.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
 				Frame_2.BorderSizePixel = 0
 				Frame_2.Position = UDim2.new(0.53, 0, 1, 0)
-				Frame_2.Size = UDim2.new(1, 0, 0, 1)
-
-				ImageLabel.Parent = DropdownBox
-				ImageLabel.AnchorPoint = Vector2.new(0, 0.5)
-				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				ImageLabel.BackgroundTransparency = 1.000
-				ImageLabel.BorderSizePixel = 0
-				ImageLabel.Position = UDim2.new(0.910000026, 0, 0.5, 0)
-				ImageLabel.Size = UDim2.new(0, 40, 0, 35)
-				ImageLabel.Image = "rbxassetid://3926305904"
-				ImageLabel.ImageColor3 = Color3.fromRGB(136, 136, 136)
-				ImageLabel.ImageRectOffset = Vector2.new(44, 404)
-				ImageLabel.ImageRectSize = Vector2.new(36, 36)
-				ImageLabel.Rotation = 90
+				Frame_2.Size = UDim2.new(1, 0, 0, 1) 
 
 				Tsd.Name = placeholder
 				Tsd.Parent = Main
@@ -1024,6 +1011,27 @@ function UILibrary.Main(PrjName,HideKey)
 				Tsd.Size = UDim2.new(0, 360, 0, 270)
 				Tsd.ZIndex = 4
 				Tsd.Visible = true
+
+				local CloseButton = Instance.new("TextButton")
+
+				CloseButton.Name = "CloseButton"
+				CloseButton.Parent = Tsd
+				CloseButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				CloseButton.BackgroundTransparency = 1.000
+				CloseButton.BorderSizePixel = 0
+				CloseButton.Position = UDim2.new(0.82035929, 0, 0, 0)
+				CloseButton.Size = UDim2.new(0, 60, 0, 39)
+				CloseButton.Font = Enum.Font.GothamSemibold
+				CloseButton.Text = "Close"
+				CloseButton.TextColor3 = Color3.fromRGB(255,140,140)
+				CloseButton.TextSize = 15.000
+				CloseButton.ZIndex = 4
+
+				CloseButton.MouseButton1Click:Connect(function()
+					TweenService:Create(Label,TweenInfo.new(0.3),{Rotation = 90}):Play()
+					TweenService:Create(FadeBackgroundFrame,TweenInfo.new(0.3),{BackgroundTransparency = 1}):Play()
+					Tsd:TweenPosition(UDim2.new(0.5,0,1.5,0),"Out","Quart",0.3)
+				end)
 
 				DropdownListCorner.Name = "DropdownListCorner"
 				DropdownListCorner.Parent = Tsd
@@ -1095,7 +1103,7 @@ function UILibrary.Main(PrjName,HideKey)
 				ignd2.LayoutOrder = 9999
 
 				DropdownBox.MouseButton1Click:Connect(function()
-					TweenService:Create(ImageLabel,TweenInfo.new(0.3),{Rotation = 180}):Play()
+					TweenService:Create(Label,TweenInfo.new(0.3),{Rotation = 180}):Play()
 					TweenService:Create(FadeBackgroundFrame,TweenInfo.new(0.3),{BackgroundTransparency = 0.3}):Play()
 					Tsd:TweenPosition(UDim2.new(0.5,0,0.5,0),"Out","Quart",0.3)
 				end)
@@ -1149,7 +1157,7 @@ function UILibrary.Main(PrjName,HideKey)
 
 
 					local ChoosedCircle = Instance.new("Frame")
-					local InnerCircle = Instance.new("ImageButton")
+					local InnerCircle = Instance.new("Button")
 					local ChoosedCircleCorner = Instance.new("UICorner")
 					local ChoosedCircleStroke = Instance.new("UIStroke")
 
@@ -1170,10 +1178,10 @@ function UILibrary.Main(PrjName,HideKey)
 					InnerCircle.BorderSizePixel = 0
 					InnerCircle.Position = UDim2.new(0.5, 0, 0.5, 0)
 					InnerCircle.Size = UDim2.new(0, 0, 0, 0)
-					InnerCircle.Image = "rbxassetid://3926305904"
-					InnerCircle.ImageRectOffset = Vector2.new(204, 484)
-					InnerCircle.ImageRectSize = Vector2.new(36, 36)
-					InnerCircle.ImageTransparency = 0
+					InnerCircle. = "rbxassetid://3926305904"
+					InnerCircle.RectOffset = Vector2.new(204, 484)
+					InnerCircle.RectSize = Vector2.new(36, 36)
+					InnerCircle.Transparency = 0
 
 
 					ChoosedCircleCorner.CornerRadius = UDim.new(0, 100)
