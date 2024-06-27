@@ -1,13 +1,10 @@
--- GUI Library
+local GUI_LIBRARY = {}
 
--- Constants
-local HIDE_KEY = "GUI_Hide"
-local GUI_LIBRARY = script
-
--- Services
 local userInputService = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
 
--- Functions
+local guiFrame = Instance.new("ScreenGui")
+guiFrame.Parent = player.PlayerGui
 
 local function createTab(label, frame)
     local tab = Instance.new("Frame")
@@ -48,49 +45,14 @@ local function createNotification(text)
     return notificationFrame
 end
 
-local function hideGUI()
-    GUI_LIBRARY.InputBegan:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode["Backslash"] then
-            GUI_LIBRARY.Visible = not GUI_LIBRARY.Visible
-        end
-    end)
-end
-
--- Create GUI Frame
-local guiFrame = Instance.new("ScreenGui")
-guiFrame.Name = "GUI"
-guiFrame.Parent = game.Players.LocalPlayer.PlayerGui
-
--- Create Tabs Frame
-local tabsFrame = Instance.new("Folder")
-tabsFrame.Name = "Tabs"
-tabsFrame.Parent = guiFrame
-
--- Create List Frame
-local listFrame = Instance.new("Folder")
-listFrame.Name = "List"
-listFrame.Parent = guiFrame
-
--- Create Notification Frame
-local notificationFrameParent = Instance.new("Folder")
-notificationFrameParent.Name = "Notifications"
-notificationFrameParent.Parent = guiFrame
-
--- Create Tabs and List
-createTab("Tab 1", tabsFrame)
-createTab("Tab 2", tabsFrame)
-
-local listLayout = createList(listFrame)
-
--- Create Notification popup
-local notificationPopupParentedToNotificationFrame
-
--- Set GUI Visible by default to false and add event listener to show/hide when pressing backslash key
 GUI_LIBRARY.Visible = false
 
-hideGUI()
+userInputService.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode["Backslash"] then
+        GUI_LIBRARY.Visible = not GUI_LIBRARY.Visible
+    end
+end)
 
--- Load GUI into the game (can be called when needed)
 function GUI_LIBRARY:Load()
     
 end
